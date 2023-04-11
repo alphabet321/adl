@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sum of Numbers</title>
+	<script>
+		function sumofn(){
+			let n = prompt("Enter a number:");
+			let confirmNumber = confirm("Would you like to add another number?");
+
+			let sum = Number(n); // Initialize the sum with n converted to a number
+
+			// If the user confirms adding another number
+			if(confirmNumber){
+				let otherNumber = prompt("Enter the other number:");
+				sum += Number(otherNumber); // Add the other number to the sum
+			}
+
+			// Display the sum using an alert box
+			alert("The sum of the numbers is " + sum);
+		}
+	</script>
+</head>
+<body>
+	<h1>Sum of Numbers</h1>
+	<button onclick="sumofn()">Find Sum</button>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Number to Word Converter</title>
+    <script type="text/javascript">
+        function convertToWord() {
+            // Get the number input element
+            var numberInput = document.getElementById("number-input");
+
+            // Get the value entered by the user
+            var number = parseInt(numberInput.value);
+
+            // Check if the input is valid
+            if (isNaN(number) || number < 0 || number > 999) {
+                alert("Please enter a valid number between 0 and 999.");
+                return;
+            }
+
+            // Define arrays for the word equivalents
+            var ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+            var tens = ["", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
+            var teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];
+
+            // Determine the word equivalent of the number
+            var word = "";
+            if (number >= 100) {
+                word += ones[Math.floor(number / 100)] + " hundred ";
+                number %= 100;
+            }
+            if (number >= 20) {
+                word += tens[Math.floor(number / 10)] + " ";
+                number %= 10;
+            }
+            if (number >= 10 && number <= 19) {
+                word += teens[number - 10] + " ";
+                number = 0;
+            }
+            if (number >= 1 && number <= 9) {
+                word += ones[number] + " ";
+            }
+            if (word == "") {
+                word = "zero";
+            }
+
+            // Display the word equivalent on the page
+            var wordOutput = document.getElementById("word-output");
+            wordOutput.innerHTML = word;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Number to Word Converter</h1>
+    <p>Enter a number between 0 and 999:</p>
+    <input type="text" id="number-input" maxlength="3">
+    <button onclick="convertToWord()">Convert</button>
+    <p>The word equivalent of the number is:</p>
+    <p id="word-output"></p>
+</body>
+
+</html>
