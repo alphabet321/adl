@@ -1,0 +1,30 @@
+<HTML><HEAD><TITLE>Payment By Credit Card</TITLE></HEAD>
+    <BODY>
+    <MARQUEE>WWW.BOOKS.COM</MARQUEE>
+    <IMG SRC=".\book.gif" height="30%" width="40%">
+    <PRE>
+    <A HREF=".\HomePage1.html">Home Page</A>
+    <A HREF=".\Registration1.html">Registration User Login</A>
+    <A HREF=".\UserProfile1.html">User Profile Page</A>
+    <A HREF=".\BooksCatalog1.html">Books Catalog</A>
+    <A HREF=".\ShoppingCart1.html">Shopping Cart</A>
+    <A HREF=".\Payment1.html">Payment By CreditCard</A>
+    <A HREF=".\OrderConfirmation1.html">Order Confirmation</A>
+    </PRE>
+    <table border=0 cellpadding=0 cellspacing=0 width=400>
+    <tr><th>What will it take to pay off my credit card?</th></tr>
+    <tr><td align=center>
+    <table cellpadding=2 cellspacing=0>
+    <tr><td align="right">Enter your credit card balance: $</td><td><input size=6 type=text id="cwBalance"></td></tr>
+    <tr><td align="right">Enter the credit card's interest rate: </td><td><input size=6 type=text id="cwRate">%</td></tr>
+    
+    
+    <tr><td align="right">Enter payment amount per month: $</td><td><input size=6 type=text id="cwMonthlyAmount"></td></tr>
+    <tr><td align="center"><b>or</b></td><td> </td></tr>
+    <tr><td align="right">Enter desired months until debt free: </td><td><input size=6 type=text id="cwDesiredMonths"></td></tr>
+    <tr><td colspan=2 align="center"><input type=button value="Calculate" onclick="cwCalc();"></td></tr>
+    <tr><td colspan=2 align="center" id="cwResult"></td></tr>
+    </table></td></tr>
+    </table>
+    </BODY>
+    </HTML>

@@ -1,0 +1,49 @@
+<%@page import="java.net.URLEncoder"%>
+<%
+  // get the value from user input
+  String value = request.getParameter("value");
+  
+  // encode the value
+  String encodedValue = URLEncoder.encode(value, "UTF-8");
+  
+  // create a new cookie with the encoded value
+  Cookie cookie = new Cookie("myCookie", encodedValue);
+  
+  // set the cookie's max age to 1 day (in seconds)
+  cookie.setMaxAge(86400);
+  
+  // add the cookie to the response
+  response.addCookie(cookie);
+  
+  // retrieve the cookie value (if it exists)
+  String cookieValue = null;
+  Cookie[] cookies = request.getCookies();
+  if (cookies != null) {
+    for (Cookie c : cookies) {
+      if (c.getName().equals("myCookie")) {
+        cookieValue = c.getValue();
+        // decode the value
+        cookieValue = URLDecoder.decode(cookieValue, "UTF-8");
+        break;
+      }
+    }
+  }
+%>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cookie Example</title>
+</head>
+<body>
+  <form method="post">
+    <label for="value">Enter a value:</label>
+    <input type="text" id="value" name="value">
+    <input type="submit" value="Submit">
+  </form>
+  
+  <%-- display the cookie value (if it exists) --%>
+  <% if (cookieValue != null) { %>
+    <p>The cookie value is: <%= cookieValue %></p>
+  <% } %>
+</body>
+</html>

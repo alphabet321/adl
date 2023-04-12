@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <title>Number in words</title>
+        <style>
+            input[type=text]{
+                width : 250px;
+            }
+        </style>
+        <script language="javascript">
+            function convert()
+            {
+                var num = document.forms["frm1"].num.value;
+                document.forms["frm1"].words.value = "";
+
+                var d, m, str, str2;
+                words = " ";
+                var ones=new Array("","one","two","three","four","five","six","seven","eight","nine");
+                var tens=new Array("","","twenty","thirty","forty","fifty","Sixty","seventy","eighty","ninety");
+                var str2=new Array("ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","ninteen");
+
+
+
+                if(isNaN(num))
+                {
+                    alert("Not a Number");
+                }
+                else if (num <0 || num > 999)
+                {
+                    alert("Out of Range");
+                }
+                else
+                {
+                    m = num.toString();
+                    if(m.charAt(0)=='0' && m.length>1)
+                    {
+                        m = m.substring(1,m.length)
+                    }
+
+                    x = m.length;
+                    if(x == 3)
+                    {
+                        var c2=parseInt(m.charAt(2));
+                        var c1=parseInt(m.charAt(1));
+                        var c0=parseInt(m.charAt(0));
+                        if(c1==1)
+                        {
+                            words += ones[c0]+" hundred and "+ str2[c2];
+                        }
+                        else
+                        {
+                            words += ones[c0] + " hundred and " + tens[c1] + " " + ones[c2];
+                        }
+                    }
+                    if(x==2)
+                    {
+                        var c1=parseInt(m.charAt(1));
+                        var c0=parseInt(m.charAt(0));
+                        if(c0==1)
+                        {
+                            words += str2[c1];
+                        }
+                        else
+                        {
+                            words += tens[c0] + " " + ones[c1];
+                        }
+                    }
+                    if(x==1)
+                    {
+                        var c0=parseInt(m.charAt(0));
+                        // alert(ones[c0]);
+                        words = ones[c0]
+                    }
+                        // alert(words);
+                }
+                document.forms["frm1"].words.value=words;
+            }
+        </script>
+    </head>
+    <body>
+        <form name="frm1">
+            <center><h3>NUMBER IN WORDS</h3></center>
+            <br/>
+            <center>Enter a Number :<input type="text" name="num"</input><br/></center>
+            <br/>
+            <center><input type="button"  name="inwords" value="In Words" onclick="convert()"></input></center>
+            <br/><br/><center>Number in Words :<input type="text" name="words" id="p"></input></center>
+            <br/>
+        </form>
+    </body>
+</html>
